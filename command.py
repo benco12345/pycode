@@ -14,12 +14,10 @@ RESET = "\033[0m"
 BOLD = "\033[1m"
 BLUE = "\033[34m"
 
-# שומר את קובץ ההגדרות תמיד בתיקייה שבה נמצא הסקריפט (מושלם לדיסק-און-קי)
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 CONFIG_FILE = os.path.join(SCRIPT_DIR, "chatbot_config.json")
 
 def load_config():
-    """טוען את ההגדרות מה-JSON אם הן קיימות, אחרת מחזיר ברירות מחדל"""
     default_prompt = f"{RED} >>> {RESET}"
     default_error_msg = f"{RED}{BOLD} [ERROR] {RESET}{RED}sorry but i dont know what you really are talking about \n [PYTHON] you said '{{user_input}}' so itll not a command{RESET}"
     default_clicker_data = {
@@ -63,7 +61,6 @@ def load_config():
     return default_prompt, default_error_msg, default_clicker_data
 
 def save_config(prompt, error_msg, clicker_data):
-    """שומר את ההגדרות והקליקר לקובץ JSON בנתיב המדויק"""
     data = {
         "prompt": prompt,
         "error_msg": error_msg,
@@ -78,7 +75,6 @@ def save_config(prompt, error_msg, clicker_data):
 def run_chatbot():
     print(f"{GREEN}Command mod has been activated! type 'help' to view the commands{RESET}")
     
-    # טעינת ההגדרות הראשונית
     input_input, custom_error_msg, clicker_data = load_config()
     default_error_msg = f"{RED}{BOLD} [ERROR] {RESET}{RED}sorry but i dont know what you really are talking about \n [PYTHON] you said '{{user_input}}' so itll not a command{RESET}"
     
